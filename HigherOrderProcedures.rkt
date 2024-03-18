@@ -47,7 +47,6 @@
 
 (* 8 (pi-sum 1 1000))
 
-
 ;:DEFINITE INTERAL
 
 (define (integral f a b dx)

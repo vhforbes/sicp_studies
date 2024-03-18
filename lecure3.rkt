@@ -1,4 +1,5 @@
-#lang simply-scheme
+#lang racket
+
 (define (sum FN a b)
   (if (> a b)
       0
