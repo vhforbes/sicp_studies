@@ -72,3 +72,25 @@ Example 2:
                         / \
                        4   6
 ```
+
+What we have so far that makes a powerful programming language:
+
+- Numbers and arithmetic as primitive data and procedures
+- Nesting of combinations provides a mean to combine operations
+- Definitions provide a mean of abstraction
+
+Now we learn procedure definitions. A much more powerful abstraction technique.
+
+`(define (<name> <formal parameters>) <body>)`
+
+We can call this procedures jut like we call primitive procedures.
+
+One could not tell if this was defined or built into the interpreter like + and \* or defined as a compound procedure.
+
+The **_substitution model_** is a way to think when we have compound procedures.
+
+- To apply a compound procedure to arguments evaluate the body of the procedure with each formal parameter replaced by the corresponding argument.
+
+This model of evaluating procedures and passing their result as arguments to the “father procedure” is a way to help us think about procedure application **NOT** a description of how the interpreter works.
+
+**_Conditional expressions_** are a way to makes tests and perform different operations accordingly.

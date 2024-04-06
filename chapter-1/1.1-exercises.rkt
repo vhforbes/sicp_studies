@@ -1,10 +1,11 @@
 #lang simply-scheme
 
-
 (define a 3)
 (define b (+ a 1))
 
 (+ a b (* a b))
+
+(= a b)
 
 (< a b)
 
@@ -27,9 +28,9 @@
 (/ (+ 5
       4
       (- 2 (- 3 (+ 6 (/ 4 5)))))
-      (* 3
-         (- 6 2)
-         (- 2 7)))
+   (* 3
+      (- 6 2)
+      (- 2 7)))
 
 (define (largest a b c)
   (cond ((and (> a b) (> a c) a))
@@ -112,5 +113,3 @@
   (cube-root-iter 1.0 x))
 
 (cube-root 8)
-
-
