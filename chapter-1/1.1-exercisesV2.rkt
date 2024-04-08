@@ -60,6 +60,20 @@
 (sum_square_two_largests 5 7 3)
 
 
+;1.4
+(define (a-plus-abs-b a b) ((if (> b 0) + -) a b))
+
+(a-plus-abs-b 5 -3)
+
+((if (> -3 0) + -) 5 -3)
+
+; Lisp Expression
+(- 5 -3)
+; Mathematical expression
+; (5 -(-3))
+; 8
+
+
 
 
 
