@@ -73,6 +73,22 @@
 ; (5 -(-3))
 ; 8
 
+;1.5 Normal vs Applicative Order
+
+(define (p) (p))
+; This a recursive call of p
+
+(define (test x y)
+  (if (= x 0)
+      0
+      y))
+; This test, would not evaluate y in a normal order if x = 0
+; ; But in a applicative order, it first evaluates the arguments
+; So calling p as the second argument, the function gets stuck in the
+; recurssive call p loop and never reaches the if
+
+
+
 
 
 
