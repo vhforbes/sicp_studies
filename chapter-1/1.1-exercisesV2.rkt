@@ -87,6 +87,53 @@
 ; So calling p as the second argument, the function gets stuck in the
 ; recurssive call p loop and never reaches the if
 
+;1.6
+(define (new-if predicate then-clause else-clause)
+  (cond (predicate then-clause)
+        (else else-clause)))
+
+; When you call a prodecure it evaluates the arguments of it.
+; So when the person calls the new-if it tries to evaluate the
+; srt-iter before checking if it should or not, causing a
+; inifite loop
+
+
+
+(define (sqrt-iter guess x)
+  (if (good-enough? guess x)
+      guess
+      (sqrt-iter (improve guess x) x)))
+
+; Will return bool to say if is close enough
+(define (good-enough? guess x)
+  (< (abs (- (square guess) x)) 0.001))
+
+; 1.7
+(define (improved-good-enough? previous-guess guess)
+  (> (abs (/ (- guess previous-guess) guess)) 0.00000001))
+
+; WHY THE FUCK THIS DELTA IS HERE (- guess previous-guess) ??????? I dont get it, will come back latter
+
+
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (average x y)
+  (/ (+ x y ) 2))
+
+(define (sqrt x) (sqrt-iter 1.0 x))
+
+;1.7
+
+; (sqrt 12345678901234) - Wont finish
+; (sqrt 0.00000000123) - Innacurate Results
+
+
+
+
+
+
+
 
 
 
