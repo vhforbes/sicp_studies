@@ -97,22 +97,17 @@
 ; srt-iter before checking if it should or not, causing a
 ; inifite loop
 
-
-
 (define (sqrt-iter guess x)
-  (if (good-enough? guess x)
+  (if (improved-good-enough? guess (improve guess x))
       guess
       (sqrt-iter (improve guess x) x)))
 
 ; Will return bool to say if is close enough
 (define (good-enough? guess x)
-  (< (abs (- (square guess) x)) 0.001))
+  (< (abs (- (square guess) x)) 0.0000000001))
 
-; 1.7
 (define (improved-good-enough? previous-guess guess)
-  (> (abs (/ (- guess previous-guess) guess)) 0.00000001))
-
-; WHY THE FUCK THIS DELTA IS HERE (- guess previous-guess) ??????? I dont get it, will come back latter
+  (< (abs (/ (- guess previous-guess) guess)) 0.000000001))
 
 
 (define (improve guess x)
@@ -124,9 +119,29 @@
 (define (sqrt x) (sqrt-iter 1.0 x))
 
 ;1.7
+; The important logic here is in the improve of guess.
+; The first good-enough is comparing the guess to the square,
+; but squaring large or small number comes with imprecision
+; To solve this, instead of comparing the guess with the square (desired),
+; we check to see if the (new-guess - previous-guess) / (new-guess) is a
+; number small enough that is acceptable to consider it beign the square.
 
-; (sqrt 12345678901234) - Wont finish
-; (sqrt 0.00000000123) - Innacurate Results
+;1.8
+(define (improve-cube guess x)
+  (/ (+ (/ x (square guess)) (* 2 guess))
+     3))
+
+(define (sqrt-iter2 guess x)
+  (if (improved-good-enough? guess (improve guess x))
+      guess
+      (sqrt-iter (improve guess x) x)))
+
+(define (cube-iter guess x)
+  (if (improved-good-enough? guess (improve-cube guess x))
+      guess
+      (cube-iter (improve-cube guess x) x)))
+
+(cube-iter 1.0 8)
 
 
 
