@@ -1,5 +1,3 @@
-# 1 - Building Abstraction With Procedures
-
 Computation Processes are like begins that inhabit computers.
 
 Process manipulate _data,_ people create programs, they are a pattern of rules that direct processes.
@@ -11,6 +9,8 @@ A computation process is like a spirit. It cannot be seen or touched, but it can
 Is the language chosen by the author, he says is very powerful so we can see that _procedures_ in lisp can be represented and manipulated as Lisp _Data_.
 
 This is important because there are powerful program-design techniques that rely on the ability to _blur_ the distinction between “passive” data and “active” process.
+
+Is an **_applicative-order_** language. All arguments to scheme procedures are evaluated when the procedure is applied.
 
 ### 1.1 The Elements Of Programming
 
@@ -94,3 +94,35 @@ The **_substitution model_** is a way to think when we have compound procedures.
 This model of evaluating procedures and passing their result as arguments to the “father procedure” is a way to help us think about procedure application **NOT** a description of how the interpreter works.
 
 **_Conditional expressions_** are a way to makes tests and perform different operations accordingly.
+
+In the square root exercise we’ve seen that the problem can be divided into a number of subproblems.
+
+Is important that each procedure that solve one of those problems have a identifiable task and can be used as a module for defining other procedures.
+
+There’s no need to know the **_how_** the procedure computes the result or its implementation. We just need to know it works!
+
+We can regard the procedure as a **_black box_** this is called procedural abstraction.
+
+So when we define a procedure, it should be able to suppress detail. A user don’t need to know how it was implemented in order to use it!
+
+Procedures to be actually a black box need to have their arguments names in the local scope of the procedure itself. The name of the arguments used by the one who implements should not matter to the user of that procedure.
+
+In a procedure we have two types of variables:
+
+- Bound variable ⇒ The ones passed as arguments. We can change them however we want as long as we change them inside the procedure.
+- Free variable ⇒ If is not bound is free. (ex. < , abs , - ).
+
+If we change a name of a bound variable to _abs_ for example, we would capture the meaning of it and introduce a bug.
+
+The bond variables declaration inside a procedure is called **_scope._**
+
+In the sqrt example, we have a bunch of auxiliary procedures define in the same scope as it.
+
+What if it was a large program and somebody defined a procedure also called good-enough?.
+
+So avoid this clashing, we can allow the procedure to have internal definitions.
+
+Procedures defined inside the procedure itself.
+
+Since X was defined in the sqrt-lexical procedure, the procedures insidealso have access to the x.
+So we can make them FREE VARIABLES inside the definitions of the subprocedures. (see: lexical-scope.rkt)
