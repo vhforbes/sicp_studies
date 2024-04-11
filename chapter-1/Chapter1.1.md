@@ -105,24 +105,26 @@ We can regard the procedure as a **_black box_** this is called procedural abstr
 
 So when we define a procedure, it should be able to suppress detail. A user don’t need to know how it was implemented in order to use it!
 
-Procedures to be actually a black box need to have their arguments names in the local scope of the procedure itself. The name of the arguments used by the one who implements should not matter to the user of that procedure.
+Procedures to be actually a black box need to have their arguments names in the local scope of the procedure itself. **The name of the arguments used by the one who implements should not matter to the user of that procedure.**
 
 In a procedure we have two types of variables:
 
 - Bound variable ⇒ The ones passed as arguments. We can change them however we want as long as we change them inside the procedure.
 - Free variable ⇒ If is not bound is free. (ex. < , abs , - ).
 
-If we change a name of a bound variable to _abs_ for example, we would capture the meaning of it and introduce a bug.
+If we change a name of a bound variable to **_abs_** for example, we would capture the meaning of it and introduce a bug. Because abs is a free variable.
 
-The bond variables declaration inside a procedure is called **_scope._**
+The bound variables declaration inside a procedure is called **_scope._**
 
-In the sqrt example, we have a bunch of auxiliary procedures define in the same scope as it.
+In the sqrt example, we have a bunch of auxiliary procedures defined in the same scope as it.
 
 What if it was a large program and somebody defined a procedure also called good-enough?.
 
-So avoid this clashing, we can allow the procedure to have internal definitions.
+So avoid this clashing of names, we can allow the procedure to have internal definitions.
 
 Procedures defined inside the procedure itself.
 
 Since X was defined in the sqrt-lexical procedure, the procedures insidealso have access to the x.
-So we can make them FREE VARIABLES inside the definitions of the subprocedures. (see: lexical-scope.rkt)
+So we can make them FREE VARIABLES inside the definitions of the subprocedures.
+
+(see: chaper-1/lexical-scope.rkt)
