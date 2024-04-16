@@ -1,27 +1,5 @@
 #lang simply-scheme
 
-
-; (define (add1 x y)
-;   (if (= x 0)
-;       y
-;       (add1 (+ -1 x) (+ 1 y))))
-
-; (add1 3 4)
-; The process =>
-; (add1 2 5)
-; (add1 1 6)
-; (add1 0 7)
-; 7
-
-; (define (add2 x y)
-;   (if (= x 0)
-;       y
-;       (add2 1 (+ (+ -1 x) y))))
-
-; (add2 3 4)
-
-; ---------------------------------------------
-
 (define (factorial-recursive n)
   (if (= n 1)
       1
